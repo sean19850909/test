@@ -21,8 +21,10 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+	use Illuminate\Support\Facades\Auth;
 
-    /**
+
+	/**
      * Where to redirect users after registration.
      *
      * @var string
@@ -68,4 +70,13 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+	/**
+	 * @return mixed
+	 *
+	 */
+	protected function guard()
+	{
+		return Auth::guard('guard-name');
+	}
 }

@@ -19,6 +19,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+	use Illuminate\Support\Facades\Auth;
 
     /**
      * Where to redirect users after login.
@@ -36,4 +37,22 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+	/**
+	 * @return string
+	 * 自定义用户名
+	 */
+    public function username()
+    {
+    	return 'username';
+    }
+
+	/**
+	 * @return mixed
+	 *
+	 */
+	protected function guard()
+	{
+		return Auth::guard('guard-name');
+	}
 }

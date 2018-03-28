@@ -19,8 +19,10 @@ class ResetPasswordController extends Controller
     */
 
     use ResetsPasswords;
+	use Illuminate\Support\Facades\Auth;
 
-    /**
+
+	/**
      * Where to redirect users after resetting their password.
      *
      * @var string
@@ -36,4 +38,13 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+	/**
+	 * @return mixed
+	 *
+	 */
+	protected function guard()
+	{
+		return Auth::guard('guard-name');
+	}
 }
